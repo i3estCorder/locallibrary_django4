@@ -27,6 +27,7 @@ class Language(models.Model):
 
     def __str__(self):
         """String for representing the Model object (in Admin site etc.)"""
+        return self.name
 
 
 class Book(models.Model):
@@ -50,8 +51,7 @@ class Book(models.Model):
 
     def display_genre(self):
         """Creates a string for the Genre. This is required to display genre is Admin."""
-        return ', '.join([genre.name for genre in self.genre.all()()[:3]])
-
+        return ', '.join(genre.name for genre in self.genre.all()[:3])
     display_genre.short_description = 'Genre'
 
     def __str__(self):
